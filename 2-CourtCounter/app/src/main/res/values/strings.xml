@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Court Counter</string>
+
+    <string name="score">Score: %d</string>
+
+    <string name="plus2">+2</string>
+    <string name="plus3">+3</string>
+    <string name="freethrow">Freethrow</string>
+
+    <string name="minus1">-1</string>
+    <string name="reset">Reset</string>
+
+    <string name="hammer_head">Team Hammerhead</string>
+    <string name="the_storm">The Storm</string>
+
 </resources>

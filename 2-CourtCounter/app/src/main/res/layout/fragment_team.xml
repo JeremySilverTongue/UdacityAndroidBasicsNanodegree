@@ -1,0 +1,49 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context="com.udacity.silver.courtcounter.ui.TeamFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Team Name"
+        android:id="@+id/team_name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+
+        />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/plus2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/plus2" />
+
+    <Button
+        android:id="@+id/plus3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/plus3" />
+
+    <Button
+        android:id="@+id/plus1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/freethrow" />
+
+    <Button
+        android:id="@+id/minus1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/minus1" />
+
+
+</LinearLayout>
