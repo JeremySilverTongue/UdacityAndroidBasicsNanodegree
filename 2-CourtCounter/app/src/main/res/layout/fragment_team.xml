@@ -7,11 +7,11 @@
     tools:context="com.udacity.silver.courtcounter.ui.TeamFragment">
 
     <TextView
+        android:id="@+id/team_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="Team Name"
-        android:id="@+id/team_name"
         android:textAppearance="?android:attr/textAppearanceMedium"
+        tools:text="Team Name"
 
         />
 

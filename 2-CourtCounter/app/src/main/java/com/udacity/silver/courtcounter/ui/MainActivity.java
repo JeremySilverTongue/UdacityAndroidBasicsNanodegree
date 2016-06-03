@@ -1,18 +1,12 @@
 package com.udacity.silver.courtcounter.ui;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.udacity.silver.courtcounter.R;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class MainActivity extends AppCompatActivity {
-
 
 
     TeamFragment team1;

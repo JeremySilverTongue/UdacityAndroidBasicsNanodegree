@@ -39,7 +39,6 @@ public class TeamFragment extends Fragment {
     private int score;
 
 
-
     public TeamFragment() {
     }
 
@@ -64,6 +63,14 @@ public class TeamFragment extends Fragment {
         return root;
     }
 
+    void reset() {
+        score = 0;
+        updateScoreView();
+    }
+
+    private void updateScoreView() {
+        scoreView.setText(String.format(Locale.getDefault(), scoreFormat, score));
+    }
 
     private class ScoreIncrementer implements View.OnClickListener {
 
@@ -78,15 +85,6 @@ public class TeamFragment extends Fragment {
             score += increment;
             updateScoreView();
         }
-    }
-
-    void reset() {
-        score = 0;
-        updateScoreView();
-    }
-
-    private void updateScoreView() {
-        scoreView.setText(String.format(Locale.getDefault(), scoreFormat, score));
     }
 
 }
