@@ -1,3 +1,35 @@
 <resources>
     <string name="app_name">QuizApp</string>
+
+
+    <string name="grade">Grade!</string>
+
+    <string name="allCorrect">Nice work! Now get out there and shred!</string>
+    <string name="notAllCorrect">Whoops! Try the questions in red again.</string>
+
+
+    <string name="question_1">What is the best action sport?</string>
+    <string name="answer_1">skateboard</string>
+
+
+    <string name="question_2">How many wheels does a skateboard have?</string>
+    <string name="question_2_option_1">1</string>
+    <string name="question_2_option_2">2</string>
+    <string name="question_2_option_3">3</string>
+    <string name="question_2_option_4">4</string>
+
+    <string name="question_3">What should you say to a skateboarder who just did a trick?</string>
+    <string name="question_3_option_1">Sick, brah!</string>
+    <string name="question_3_option_2">Toodle pip!</string>
+    <string name="question_3_option_3">Wicked radical</string>
+    <string name="question_3_option_4">(Fart sounds)</string>
+
+    <string name="question_4">What\'s it called when you jump on a skateboard?</string>
+    <string name="answer_4">ollie</string>
+
+    <string name="question_5">What\'s it called when you slide along a rail or ledge on a skateboard?</string>
+    <string name="answer_5">grind</string>
+
+
+
 </resources>
