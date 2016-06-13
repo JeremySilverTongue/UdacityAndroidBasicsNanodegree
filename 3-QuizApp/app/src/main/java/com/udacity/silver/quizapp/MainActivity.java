@@ -112,11 +112,10 @@ public class MainActivity extends AppCompatActivity {
                         !question3option4.isChecked();
 
         if (question3Correct) {
-            markCorrect(question2);
+            markCorrect(question3);
         } else {
-            markWrong(question2);
+            markWrong(question3);
         }
-
 
         Boolean question1Correct = gradeTextQuestion(question1, answer1, answer1String);
         Boolean question4Correct = gradeTextQuestion(question4, answer4, answer4String);
@@ -136,8 +135,6 @@ public class MainActivity extends AppCompatActivity {
         spinAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
         spinAnimation.setDuration(500);
         spinAnimation.start();
-
-
     }
 
     private boolean gradeTextQuestion(View question, EditText editText, String answer) {
