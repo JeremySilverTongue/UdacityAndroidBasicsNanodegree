@@ -84,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
     @BindString(R.string.notAllCorrect)
     String notAllCorrect;
 
+    Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+
+        toast = Toast.makeText(this, notAllCorrect, Toast.LENGTH_LONG);
 
 
     }
@@ -122,13 +125,14 @@ public class MainActivity extends AppCompatActivity {
         Boolean question5Correct = gradeTextQuestion(question5, answer5, answer5String);
 
 
-        String toastTest = notAllCorrect;
+        int toastResource = R.string.notAllCorrect;
 
         if (question1Correct && question2Correct && question3Correct && question4Correct && question5Correct) {
-            toastTest = allCorrect;
+            toastResource = R.string.allCorrect;
         }
 
-        Toast.makeText(this, toastTest, Toast.LENGTH_LONG).show();
+        toast.setText(toastResource);
+        toast.show();
 
 
         ObjectAnimator spinAnimation = ObjectAnimator.ofFloat(gradeButton, "rotation", 0, 1080);

@@ -81,9 +81,9 @@
     </LinearLayout>
 
     <LinearLayout
-        android:baselineAligned="false"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:baselineAligned="false">
 
         <LinearLayout
             android:id="@+id/question_2"
@@ -122,11 +122,11 @@
                     android:text="@string/question_2_option_3" />
 
                 <RadioButton
+                    android:id="@+id/question_2_correct_option"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/question_2_option_4"
 
-                    android:id="@+id/question_2_correct_option"/>
+                    android:text="@string/question_2_option_4" />
 
 
             </RadioGroup>
@@ -149,37 +149,34 @@
 
 
             <CheckBox
+                android:id="@+id/question_3_option_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/question_3_option_1"
-                android:id="@+id/question_3_option_1"/>
+                android:text="@string/question_3_option_1" />
 
             <CheckBox
+                android:id="@+id/question_3_option_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/question_3_option_2"
-                android:id="@+id/question_3_option_2"/>
+                android:text="@string/question_3_option_2" />
 
 
             <CheckBox
+                android:id="@+id/question_3_option_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/question_3_option_3"
-                android:id="@+id/question_3_option_3"/>
+                android:text="@string/question_3_option_3" />
 
             <CheckBox
+                android:id="@+id/question_3_option_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/question_3_option_4"
-                android:id="@+id/question_3_option_4"/>
+                android:text="@string/question_3_option_4" />
 
 
         </LinearLayout>
 
     </LinearLayout>
-
-
-
 
 
     <Button
