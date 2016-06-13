@@ -67,11 +67,11 @@ public class NewsActivity extends AppCompatActivity implements LoaderCallbacks<L
         newsListView.setOnItemClickListener(storyClickListener);
         newsListView.setEmptyView(emptyView);
 
-        url = QueryUtils.buildUrl(this);
+        url = QueryUtils.buildUrl();
         updateEarthquakeData();
     }
 
-    public void updateEarthquakeData() {
+    private void updateEarthquakeData() {
         ConnectivityManager manager =
                 (ConnectivityManager) getSystemService(CONNECTIVITY_SERVICE);
 

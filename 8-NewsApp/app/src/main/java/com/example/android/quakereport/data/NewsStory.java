@@ -9,10 +9,10 @@ public class NewsStory {
 
     public final Uri uri;
 
-    public NewsStory(String title,
-                     String thumbnail,
+    NewsStory(String title,
+              String thumbnail,
 
-                     String url
+              String url
     ) {
 
         this.title = title;

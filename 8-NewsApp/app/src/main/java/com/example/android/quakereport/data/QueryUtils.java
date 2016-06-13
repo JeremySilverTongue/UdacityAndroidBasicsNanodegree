@@ -1,6 +1,5 @@
 package com.example.android.quakereport.data;
 
-import android.content.Context;
 import android.net.Uri;
 import android.net.Uri.Builder;
 
@@ -57,7 +56,7 @@ public final class QueryUtils {
         return paramMap;
     }
 
-    public static URL buildUrl(Context context) {
+    public static URL buildUrl() {
         Uri baseUri = Uri.parse(BASE_URL);
         Builder uriBuilder = baseUri.buildUpon();
 

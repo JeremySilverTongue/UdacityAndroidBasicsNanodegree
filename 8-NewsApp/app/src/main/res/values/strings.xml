@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
 <resources>
     <string name="app_name">Warrior News!</string>
 
@@ -10,6 +9,5 @@
     <string name="error_no_result">"Error: Couldn't find an earthquake"</string>
 
     <string name="content_description_thumbnail">thumbnail</string>
-
 
 </resources>

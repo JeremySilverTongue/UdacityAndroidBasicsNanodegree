@@ -7,13 +7,11 @@ import java.util.List;
 
 public class NewsLoader extends android.content.AsyncTaskLoader<List<NewsStory>> {
 
-    public static final String LOG_TAG = NewsLoader.class.getName();
-
-    private URL mUrl;
+    private URL url;
 
     public NewsLoader(Context context, URL url) {
         super(context);
-        this.mUrl = url;
+        this.url = url;
     }
 
     @Override
@@ -24,7 +22,7 @@ public class NewsLoader extends android.content.AsyncTaskLoader<List<NewsStory>>
 
     @Override
     public List<NewsStory> loadInBackground() {
-        String json = QueryUtils.makeHttpRequest(mUrl);
+        String json = QueryUtils.makeHttpRequest(url);
         return QueryUtils.extractEarthquakes(json);
     }
 }

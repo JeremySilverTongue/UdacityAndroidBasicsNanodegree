@@ -18,17 +18,17 @@ import butterknife.ButterKnife;
 
 class NewsAdapter extends ArrayAdapter<NewsStory> {
 
-    private final LayoutInflater mInflater;
+    private final LayoutInflater inflater;
 
     NewsAdapter(Context context) {
         super(context, 0);
-        mInflater = LayoutInflater.from(context);
+        inflater = LayoutInflater.from(context);
     }
 
     @Override
     public View getView(int position, View view, ViewGroup parent) {
         if (view == null) {
-            view = mInflater.inflate(R.layout.list_item_news, parent, false);
+            view = inflater.inflate(R.layout.list_item_news, parent, false);
         }
 
         NewsStoryViewHolder viewHolder = (NewsStoryViewHolder) view.getTag();
@@ -41,9 +41,6 @@ class NewsAdapter extends ArrayAdapter<NewsStory> {
         viewHolder.title.setText(newsStory.title);
 
         Glide.with(getContext()).load(newsStory.thumbnail).into(viewHolder.thumbnail);
-
-//        Timber.d(newsStory.uri);
-//        Picasso.with(getContext()).load(newsStory.thumbnail).into(viewHolder.thumbnail);
 
         return view;
     }
