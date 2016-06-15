@@ -17,7 +17,6 @@ import com.udacity.silver.habits.data.Storage;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import timber.log.Timber;
 
 public class AddHabitDialog extends DialogFragment {
 
@@ -46,7 +45,6 @@ public class AddHabitDialog extends DialogFragment {
         Dialog dialog = builder.create();
         dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
 
-
         ButterKnife.bind(this, custom);
 
         habit.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -61,7 +59,6 @@ public class AddHabitDialog extends DialogFragment {
     }
 
     private void addHabit() {
-        Timber.d("I am adding a habit: %s", habit.getText().toString());
         Storage.addHabit(getActivity(), habit.getText().toString());
         dismissAllowingStateLoss();
     }

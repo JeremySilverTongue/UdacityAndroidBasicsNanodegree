@@ -6,4 +6,8 @@
     <string name="dialog_hint">Habit Name</string>
     <string name="dialog_cancel">Cancel</string>
     <string name="dialog_add">Add</string>
+
+    <string name="empty_view_instructions">Press the button to add a new habit!</string>
+
+    <string name="times_per_day">%.2f/Day</string>
 </resources>

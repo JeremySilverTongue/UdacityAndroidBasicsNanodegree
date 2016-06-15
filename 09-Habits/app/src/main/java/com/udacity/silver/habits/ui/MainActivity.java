@@ -1,12 +1,12 @@
 package com.udacity.silver.habits.ui;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.udacity.silver.habits.R;
 
@@ -19,8 +19,10 @@ public class MainActivity extends AppCompatActivity {
     private static final String HABIT_DIALOG_TAG = "Habit Dialog Fragment";
     @BindView(R.id.habits_list)
     RecyclerView habitsList;
-    private HabitAdapter habitAdapter;
-    private SharedPreferences.OnSharedPreferenceChangeListener listener;
+
+    @BindView(R.id.empty_view)
+    TextView emptyView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,32 +31,16 @@ public class MainActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        habitAdapter = new HabitAdapter(this);
-
-
+        HabitAdapter habitAdapter = new HabitAdapter(this, emptyView);
         habitsList.setAdapter(habitAdapter);
-
         habitsList.setLayoutManager(new LinearLayoutManager(this));
 
-        listener = new SharedPreferences.OnSharedPreferenceChangeListener() {
-            @Override
-            public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-                habitAdapter.reloadHabits();
-            }
-
-
-        };
-
         PreferenceManager.getDefaultSharedPreferences(this).
-
-                registerOnSharedPreferenceChangeListener(listener);
+                registerOnSharedPreferenceChangeListener(habitAdapter);
 
     }
 
     public void addHabit(View view) {
         new AddHabitDialog().show(getFragmentManager(), HABIT_DIALOG_TAG);
-
     }
-
-
 }

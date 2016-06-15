@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:drawable="@drawable/ic_cross">
-
+    android:drawable="@drawable/ic_plus">
 
     <target
-        android:name="@string/cross"
-        android:animation="@animator/cross_to_cross" />
-
+        android:name="@string/plus"
+        android:animation="@animator/plus_to_plus" />
 
 </animated-vector>

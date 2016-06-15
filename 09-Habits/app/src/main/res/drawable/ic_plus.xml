@@ -7,13 +7,13 @@
     android:viewportWidth="@integer/viewport_width">
 
     <group
-        android:name="@string/groupTickCross"
+        android:name="@string/groupTickPlus"
         android:pivotX="@integer/viewport_center_x"
         android:pivotY="@integer/viewport_center_y">
 
         <path
-            android:name="@string/cross"
-            android:pathData="@string/path_cross"
+            android:name="@string/plus"
+            android:pathData="@string/path_plus"
             android:strokeColor="@color/stroke_color"
             android:strokeLineCap="square"
             android:strokeWidth="@integer/stroke_width" />

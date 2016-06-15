@@ -10,6 +10,8 @@ public class HabitsApp extends Application {
     public void onCreate() {
         super.onCreate();
         Timber.uprootAll();
-        Timber.plant(new Timber.DebugTree());
+        if (BuildConfig.DEBUG) {
+            Timber.plant(new Timber.DebugTree());
+        }
     }
 }
