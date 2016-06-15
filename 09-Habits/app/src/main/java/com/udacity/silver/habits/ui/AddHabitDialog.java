@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.udacity.silver.habits.R;
+import com.udacity.silver.habits.data.Storage;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,14 +62,9 @@ public class AddHabitDialog extends DialogFragment {
 
     private void addHabit() {
         Timber.d("I am adding a habit: %s", habit.getText().toString());
+        Storage.addHabit(getActivity(), habit.getText().toString());
         dismissAllowingStateLoss();
     }
 
-
-    interface HabitAdder {
-
-        void addHabit(String habitName);
-
-    }
 
 }

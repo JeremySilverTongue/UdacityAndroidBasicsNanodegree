@@ -7,10 +7,13 @@
     tools:context="com.udacity.silver.habits.ui.MainActivity">
 
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/habits_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/activity_margin"
+
+        />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

@@ -9,6 +9,8 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import timber.log.Timber;
+
 public final class Storage {
 
     private static final String HABIT_SET_KEY = "habits";
@@ -33,6 +35,8 @@ public final class Storage {
         editor.putInt(habitName + HABIT_COUNT_SUFFIX, 0);
         editor.putLong(habitName + HABIT_TIME_SUFFIX, System.currentTimeMillis());
         editor.apply();
+
+        Timber.d("%s", habits.toString());
     }
 
 
