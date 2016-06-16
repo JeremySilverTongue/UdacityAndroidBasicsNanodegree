@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <integer name="viewport_width">24</integer>
+    <integer name="viewport_height">24</integer>
+    <integer name="viewport_center_x">12</integer>
+    <integer name="viewport_center_y">12</integer>
+
+    <integer name="duration">450</integer>
+
+    <string name="pause_path">M4,4 L4,20 L10,20 L10,4 z M14,4 L14,20 L20,20 L20,4 z</string>
+    <string name="play_path">M4,4 L4,20 L12,16 L12,8 z M12,8 L12,16 L20,12 L20,12 z</string>
+
+    <string name="pause">pause</string>
+    <string name="play">play</string>
+    <string name="group_play_pause">groupPlayPause</string>
+
+</resources>

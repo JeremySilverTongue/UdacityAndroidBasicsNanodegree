@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">Musical Structure</string>
+    <string name="title_activity_now_playing">Now Playing Activity</string>
+    <string name="title_activity_browse">Browse Activity</string>
+    <string name="title_activity_search">Search Activity</string>
+    <string name="title_activity_radio">Radio Activity</string>
+    <string name="title_activity_library">Library Activity</string>
+
+    <string name="now_playing">Now Playing</string>
+    <string name="browse">Browse</string>
+    <string name="search">Search</string>
+    <string name="radio">Radio</string>
+    <string name="library">Library</string>
+
+    <string name="home_description">The structure of this app is based on Spotify. \n\nThis is the home screen of the music app! It shows recent songs you\'ve played, playlists you were in the middle of, and suggestions of playlists, radio stations, and tracks to listen to.\n\nThere are a ton of potential hurdles here, such as how to store the user\'s playlists and tracks, and how to determine what to suggest. This is really the special sauce of what makes a music app great, so, like, the technical solution is to make an awesome music app. </string>
+
+    <string name="nowplaying_description">This screen will display info on the currently playing track, including album art, title, duration, and so on. It will also present controls, such as a seek bar, play and pause buttons, track skip buttons, and perhaps jump forward/back by some number of seconds. \n\nAudio playback is interesting, since it has to keep happening when the app is not in the foreground, and thus must be handled from a service. </string>
+
+    <string name="browse_description">This screen is for browsing the music available in the music app\'s streaming collection. This will require some interesting set of nested list views.</string>
+
+    <string name="search_description">This screen will allow the user to search for tracks, albums, or artists. There\'s an awesome search and autocomplete framework that works with content providers.</string>
+
+    <string name="radio_description">This screen allows the user to play radio stations based on either a genre, an existing playlist, or an artist. This screen will require the use of some fancy unsupervised machine learning to find clusters of related tracks, thus predicting what the user is likely to want to hear.</string>
+
+    <string name="library_description">Finally, we have a screen that allows the user to browse their own library of songs. This will be similar to the Browse screen, but will be limited to what the user has downloaded to their device.</string>
+
+
 </resources>
