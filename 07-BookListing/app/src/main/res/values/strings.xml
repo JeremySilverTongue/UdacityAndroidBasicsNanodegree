@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="app_name">Book Search</string>
+
+    <string name="error_no_params">Error: No query parameters</string>
+    <string name="error_bad_url">Error: Invalid URL</string>
+    <string name="error_no_connection">Error: No Internet Connection</string>
+    <string name="error_no_result">"Error: No Results"</string>
+
+    <string name="search_hint">Enter Book Info</string>
+    <string name="search">Search!</string>
+
+    <string name="heading_params">Query Parameters:</string>
+    <string name="heading_url">Query URL:</string>
+    <string name="heading_parsed_results">Parsed Books:</string>
+
+    <string name="label_title">"Title: "</string>
+    <string name="label_author">"Author: "</string>
+    <string name="label_authors">"Authors: "</string>
+    <string name="and">" and "</string>
+
+    <string name="unknown">Unknown</string>
+
+
+</resources>
