@@ -25,6 +25,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,10 +37,13 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
 
+
     private TextView mQueryTextView;
     private TextView mParamsTextView;
     private TextView mUrlTextView;
-    private TextView mResultsTextView;
+    private ListView mResultsListView;
+
+    private BookAdapter mBookAdapter;
 
 
     @Override
@@ -50,7 +54,11 @@ public class MainActivity extends AppCompatActivity {
         mQueryTextView = (TextView) findViewById(R.id.query);
         mParamsTextView = (TextView) findViewById(R.id.params);
         mUrlTextView = (TextView) findViewById(R.id.url);
-        mResultsTextView = (TextView) findViewById(R.id.results);
+        mResultsListView = (ListView) findViewById(R.id.results);
+
+        mBookAdapter = new BookAdapter(this);
+        mResultsListView.setAdapter(mBookAdapter);
+
 
         mQueryTextView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -110,58 +118,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setResultsViewContents(List<Book> bookList) {
-
-
-        if (bookList.size() > 0) {
-            StringBuilder builder = new StringBuilder();
-
-            for (Book book : bookList) {
-                builder.append(getString(R.string.label_title))
-                        .append(book.title)
-                        .append("\n");
-
-                switch (book.authors.size()) {
-                    case 0:
-                        builder.append(getString(R.string.label_author))
-                                .append(getString(R.string.unknown));
-                        break;
-                    case 1:
-                        builder.append(getString(R.string.label_author))
-                                .append(book.authors.get(0));
-                        break;
-                    case 2:
-                        builder.append(getString(R.string.label_authors))
-                                .append(book.authors.get(0))
-                                .append(getString(R.string.and))
-                                .append(book.authors.get(1));
-                        break;
-                    default:
-                        StringBuilder authorBuilder = new StringBuilder();
-
-                        for (int i = 0; i < book.authors.size(); i++) {
-
-                            if (i != 0) {
-                                authorBuilder.append(", ");
-                            }
-                            if (i == book.authors.size() - 1) {
-                                authorBuilder.append(getString(R.string.and));
-                            }
-
-                            authorBuilder.append(book.authors.get(i));
-                        }
-
-                        builder.append(getString(R.string.label_authors))
-                                .append(authorBuilder.toString());
-                        break;
-                }
-
-                builder.append("\n\n");
-
-            }
-            mResultsTextView.setText(builder.toString());
-        } else {
-            mResultsTextView.setText(getString(R.string.error_no_result));
-        }
+        mBookAdapter.clear();
+        mBookAdapter.addAll(bookList);
 
     }
 
