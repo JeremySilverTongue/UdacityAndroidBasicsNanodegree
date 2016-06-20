@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.udacity.silver.habits.R;
+import com.udacity.silver.habits.data.HabitDbHelper;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.empty_view)
     TextView emptyView;
 
+    private HabitDbHelper dbHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,14 @@ public class MainActivity extends AppCompatActivity {
         HabitAdapter habitAdapter = new HabitAdapter(this, emptyView);
         habitsList.setAdapter(habitAdapter);
         habitsList.setLayoutManager(new LinearLayoutManager(this));
+
+        dbHelper = new HabitDbHelper(this);
+
+        dbHelper.addHabit("Test Habit");
+        dbHelper.addHabit("Test Habit2");
+        dbHelper.addHabit("b");
+        dbHelper.addHabit("a");
+        dbHelper.printQuery();
 
         PreferenceManager.getDefaultSharedPreferences(this).
                 registerOnSharedPreferenceChangeListener(habitAdapter);

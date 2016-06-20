@@ -5,13 +5,12 @@ android {
     compileSdkVersion 23
     buildToolsVersion "23.0.3"
     defaultConfig {
-        applicationId "com.udacity.silver.habits"
-        minSdkVersion 21
+        applicationId "com.udacity.silver.udacitytour"
+        minSdkVersion 16
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {
@@ -28,7 +27,6 @@ dependencies {
     compile 'com.jakewharton.timber:timber:4.1.2'
     compile 'com.android.support:support-v4:23.4.0'
     compile 'com.android.support:design:23.4.0'
-    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:recyclerview-v7:23.4.0'
     apt 'com.jakewharton:butterknife-compiler:8.0.1'
-    compile 'joda-time:joda-time:2.9.4'
 }
