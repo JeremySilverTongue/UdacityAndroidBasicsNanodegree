@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+
+    <TextView
+        android:id="@+id/product_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        tools:text="Super long product name that should get cut off at some point here like come on this is way too long" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        tools:text="$100.99" />
+
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        tools:text="Quant: 10"
+
+        />
+
+    <Button
+        android:id="@+id/sell_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:text="@string/sold"
+
+        />
+
+
+</LinearLayout>
