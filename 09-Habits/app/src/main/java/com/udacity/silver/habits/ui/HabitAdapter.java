@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.udacity.silver.habits.R;
 import com.udacity.silver.habits.data.Habit;
+import com.udacity.silver.habits.data.HabitDbHelper;
 import com.udacity.silver.habits.data.Storage;
 
 import java.util.List;
@@ -23,12 +24,14 @@ import butterknife.ButterKnife;
 
 class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHolder> implements SharedPreferences.OnSharedPreferenceChangeListener {
     public List<Habit> habits;
+    HabitDbHelper dbHelper;
     private View emptyView;
     private Context context;
 
     HabitAdapter(Context context, View emptyView) {
         this.context = context;
         this.emptyView = emptyView;
+        dbHelper = new HabitDbHelper(context);
         reloadHabits();
     }
 
@@ -39,7 +42,8 @@ class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHolder> im
 
     private void reloadHabits() {
 
-        habits = Storage.getHabits(context);
+
+        habits = dbHelper.getHabitsList();
 
         if (habits.size() == 0) {
             emptyView.setVisibility(View.VISIBLE);
@@ -69,11 +73,10 @@ class HabitAdapter extends RecyclerView.Adapter<HabitAdapter.HabitViewHolder> im
             @Override
             public void onClick(View v) {
                 ((AnimatedVectorDrawable) holder.doneButton.getDrawable()).start();
+                dbHelper.incrementHabit(habit.name);
                 Storage.incrementHabit(context, habit.name);
             }
         });
-
-
     }
 
     @Override

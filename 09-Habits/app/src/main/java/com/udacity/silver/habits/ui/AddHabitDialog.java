@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.udacity.silver.habits.R;
+import com.udacity.silver.habits.data.HabitDbHelper;
 import com.udacity.silver.habits.data.Storage;
 
 import butterknife.BindView;
@@ -59,6 +60,8 @@ public class AddHabitDialog extends DialogFragment {
     }
 
     private void addHabit() {
+        HabitDbHelper dbHelper = new HabitDbHelper(getActivity());
+        dbHelper.addHabit(habit.getText().toString());
         Storage.addHabit(getActivity(), habit.getText().toString());
         dismissAllowingStateLoss();
     }
