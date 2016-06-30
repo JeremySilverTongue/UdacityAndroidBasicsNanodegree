@@ -1,12 +1,14 @@
 package com.udacity.silver.inventory.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.udacity.silver.inventory.R;
 import com.udacity.silver.inventory.data.InventoryDbHelper;
@@ -72,17 +74,29 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.name.setText(product.name);
         holder.price.setText(dollarFormat.format((float) product.priceInCents / 100));
         holder.quantity.setText(context.getString(R.string.quantity, product.quantity));
-        holder.sellButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                product.quantity -= 1;
-//                productList.remove(holder.getAdapterPosition());
-//                productList.add(holder.getAdapterPosition(), product);
-                dbHelper.changeQuantity(product.name, -1);
-                onBindViewHolder(holder, holder.getAdapterPosition());
-//                refresh();
-            }
-        });
+
+
+
+        if (product.quantity == 0) {
+            holder.sellButton.setText(R.string.order);
+            holder.sellButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, "Order more!", Toast.LENGTH_LONG).show();
+                }
+            });
+        } else {
+
+
+            holder.sellButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    product.quantity -= 1;
+                    dbHelper.changeQuantity(product.name, -1);
+                    onBindViewHolder(holder, holder.getAdapterPosition());
+                }
+            });
+        }
 
     }
 
@@ -91,7 +105,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         return productList.size();
     }
 
-    class ProductViewHolder extends RecyclerView.ViewHolder {
+    class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
 
         @BindView(R.id.product_name)
@@ -110,6 +124,16 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             super(itemView);
 
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Timber.d("Clicked on a list iem");
+            Intent intent = new Intent(context, DetailActivity.class);
+            intent.putExtra(DetailActivity.PRODUCT_KEY, productList.get(getAdapterPosition()));
+            context.startActivity(intent);
+
         }
     }
 }

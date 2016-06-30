@@ -1,8 +1,13 @@
 package com.udacity.silver.inventory.ui;
 
+import android.content.DialogInterface;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -14,14 +19,17 @@ import com.udacity.silver.inventory.data.Product;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DialogInterface.OnDismissListener  {
 
+
+    private static final String DIALOG_TAG = "Product dialog";
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
 
-    ProductAdapter productAdapter;
+    private ProductAdapter productAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,15 +50,21 @@ public class MainActivity extends AppCompatActivity {
         productAdapter.refresh();
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
     }
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        productAdapter.refresh();
+    }
 
+    public void addProduct(View view) {
+        new AddProductDialog().show(getFragmentManager(), DIALOG_TAG);
+    }
+
+    @Override
+    public void onDismiss(DialogInterface dialog) {
+        Timber.d("Fragment dismissed");
+        productAdapter.refresh();
+    }
 }

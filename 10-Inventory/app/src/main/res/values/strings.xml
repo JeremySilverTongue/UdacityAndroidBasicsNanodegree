@@ -6,5 +6,6 @@
 
     <string name="sold">Sold!</string>
     <string name="order">Order</string>
+    <string name="content_description_item_image">Item Image</string>
 
 </resources>
