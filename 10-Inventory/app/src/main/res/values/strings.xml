@@ -8,4 +8,11 @@
     <string name="order">Order</string>
     <string name="content_description_item_image">Item Image</string>
 
+
+
+
+    <string name="email_subject">Restocking %s</string>
+
+    <string name="email_body"> Howdy!\n\nWe\'re fresh out of %1$s and are looking to stock up. We\'d like to place an order for XXXX units. The price is still %2$s, right?\n\nY\'all make the best %1$s in the world!\n\nThank you kindly,\n\nXXXXXX</string>
+
 </resources>

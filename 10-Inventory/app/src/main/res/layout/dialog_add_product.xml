@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:id="@+id/product_name"
-        android:text="Product Name"/>
+        android:hint="Product Name"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -23,6 +23,14 @@
         android:layout_height="wrap_content"
         android:hint="initial quanitity"
         android:id="@+id/quantity"
+
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Vendor Email"
+        android:id="@+id/email"
 
         />
 

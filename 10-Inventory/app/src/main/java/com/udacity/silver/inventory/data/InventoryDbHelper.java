@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,20 +16,30 @@ import timber.log.Timber;
 public class InventoryDbHelper extends SQLiteOpenHelper {
 
 
-    static final String COLUMN_NAME = "name";
-    static final String COLUMN_QUANTITY = "quantity";
-    static final String COLUMN_PRICE = "price";
-    static final int INDEX_NAME = 0;
-    static final int INDEX_QUANTITY = 1;
-    static final int INDEX_PRICE = 2;
-    static final String[] INVENTORY_COLUMNS = {
+    private static final String COLUMN_NAME = "name";
+    private static final String COLUMN_QUANTITY = "quantity";
+    private static final String COLUMN_PRICE = "price";
+    private static final String COLUMN_EMAIL = "email";
+    private static final String COLUMN_IMAGE_PATH = "imagepath";
+
+
+    private static final int INDEX_NAME = 0;
+    private static final int INDEX_QUANTITY = 1;
+    private static final int INDEX_PRICE = 2;
+    private static final int INDEX_EMAIL = 3;
+    private static final int INDEX_IMAGE_PATH = 4;
+
+
+    private static final String[] INVENTORY_COLUMNS = {
             COLUMN_NAME,
             COLUMN_QUANTITY,
-            COLUMN_PRICE
+            COLUMN_PRICE,
+            COLUMN_EMAIL,
+            COLUMN_IMAGE_PATH
     };
-    static final String TABLE_NAME = "inventory";
+    private static final String TABLE_NAME = "inventory";
     private static final String DATABASE_NAME = "database.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
 
     public InventoryDbHelper(Context context) {
@@ -41,6 +52,8 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
                 COLUMN_NAME + " TEXT PRIMARY KEY NOT NULL, " +
                 COLUMN_QUANTITY + " INTEGER DEFAULT 0, " +
                 COLUMN_PRICE + " INTEGER, " +
+                COLUMN_EMAIL + " TEXT, " +
+                COLUMN_IMAGE_PATH + " TEXT, " +
                 "UNIQUE (" + COLUMN_NAME + ") ON CONFLICT REPLACE" +
 
                 ")";
@@ -60,6 +73,10 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
         values.put(COLUMN_NAME, product.name);
         values.put(COLUMN_QUANTITY, product.quantity);
         values.put(COLUMN_PRICE, product.priceInCents);
+        values.put(COLUMN_EMAIL, product.vendorEmail);
+        values.put(COLUMN_IMAGE_PATH, product.imagePath);
+
+
         SQLiteDatabase db = getWritableDatabase();
         db.insert(TABLE_NAME, null, values);
         Timber.d("Adding product: %s", product);
@@ -73,7 +90,7 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
         Product product = null;
 
         if (cursor.moveToFirst()) {
-            product = new Product(cursor.getString(INDEX_NAME), cursor.getInt(INDEX_QUANTITY), cursor.getInt(INDEX_PRICE));
+            product = getProductFromCursor(cursor);
         }
 
         return product;
@@ -81,13 +98,20 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
 
     }
 
+    @NonNull
+    private Product getProductFromCursor(Cursor cursor) {
+        return new Product(
+                cursor.getString(INDEX_NAME),
+                cursor.getInt(INDEX_QUANTITY),
+                cursor.getInt(INDEX_PRICE),
+                cursor.getString(INDEX_EMAIL),
+                cursor.getString(INDEX_IMAGE_PATH)
+        );
+    }
+
     public void changeQuantity(String name, int delta) {
-
         Product product = getProduct(name);
-
-        addProduct(new Product(product.name, product.quantity + delta, product.priceInCents));
-
-
+        addProduct(new Product(product.name, product.quantity + delta, product.priceInCents, product.vendorEmail, product.imagePath));
     }
 
 
@@ -99,12 +123,12 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
 
         ArrayList<Product> products = new ArrayList<>();
         while (cursor.moveToNext()) {
-            products.add(new Product(cursor.getString(INDEX_NAME), cursor.getInt(INDEX_QUANTITY), cursor.getInt(INDEX_PRICE)));
+            products.add(getProductFromCursor(cursor));
         }
 
         cursor.close();
+        db.close();
         return products;
-
     }
 
 }

@@ -4,13 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
+
     tools:context="com.udacity.silver.inventory.ui.MainActivity">
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
+
         android:layout_height="match_parent"
+        android:drawSelectorOnTop="true"
         android:layout_margin="@dimen/activity_margin" />
 
     <android.support.design.widget.FloatingActionButton

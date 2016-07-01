@@ -82,7 +82,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             holder.sellButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(context, "Order more!", Toast.LENGTH_LONG).show();
+                    product.sendEmailToSupplier(context);
+//                    Toast.makeText(context, "Order more!", Toast.LENGTH_LONG).show();
                 }
             });
         } else {

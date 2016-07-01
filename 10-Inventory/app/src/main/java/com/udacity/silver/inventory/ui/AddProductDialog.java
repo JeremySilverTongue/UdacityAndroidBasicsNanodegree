@@ -29,6 +29,9 @@ public class AddProductDialog extends DialogFragment {
     @BindView(R.id.quantity)
     EditText quantityEditText;
 
+    @BindView(R.id.email)
+    EditText emailEditText;
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
@@ -63,10 +66,11 @@ public class AddProductDialog extends DialogFragment {
         String name = nameEditText.getText().toString();
         int price = Integer.parseInt(priceEditText.getText().toString());
         int quantity = Integer.parseInt(quantityEditText.getText().toString());
+        String email = emailEditText.getText().toString();
 
         // TODO: Add some verification that the item is legit
 
-        Product product = new Product(name, quantity, price);
+        Product product = new Product(name, quantity, price, email, "");
         db.addProduct(product);
         dismissAllowingStateLoss();
     }
