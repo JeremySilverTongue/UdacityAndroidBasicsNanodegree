@@ -37,6 +37,27 @@ public class TourAdapter extends FragmentPagerAdapter {
     }
 
     @Override
+    public CharSequence getPageTitle(int position) {
+
+        String title;
+
+        switch (position){
+            case 0:
+                title = "Conference Rooms";
+                break;
+            case 1:
+                title = "Snacks";
+                break;
+            default:
+                title = "";
+                break;
+        }
+
+
+        return title;
+    }
+
+    @Override
     public int getCount() {
         return 2;
     }

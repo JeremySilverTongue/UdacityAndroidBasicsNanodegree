@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">Udacity Tour</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
+    
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    
+    <string name="r2d2">R2-D2</string>
+    <string name="curiosity">Curiosity</string>
+    <string name="optimus_prime">Optimus Prime</string>
+    <string name="megaman">MegaMan</string>
+    <string name="past">Past</string>
+    
+    <string name="seats">Seats: %d</string>
+    
 </resources>
