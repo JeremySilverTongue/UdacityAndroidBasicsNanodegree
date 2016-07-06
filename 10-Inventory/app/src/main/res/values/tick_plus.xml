@@ -8,17 +8,11 @@
     <integer name="viewport_center_x">12</integer>
     <integer name="viewport_center_y">12</integer>
 
-    <string name="long_short_path_tick">M10.4,16.2 L19.6,7 M4.8,13.4 L9,17.6</string>
-    <string name="short_long_path_tick">M4.8,13.4 L9,17.6 M19.6,7 L10.4,16.2</string>
     <string name="path_plus">M2,12 L22,12 M12,2 L12,22</string>
     <integer name="stroke_width">2</integer>
 
-    <string name="tick">tick</string>
     <string name="plus">plus</string>
     <string name="groupTickPlus">groupTickPlus</string>
 
-    <color name="stroke_color">#999</color>
-
-    <integer name="duration">450</integer>
 
 </resources>

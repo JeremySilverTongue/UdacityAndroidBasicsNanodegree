@@ -36,17 +36,18 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     private static final String DIALOG_TAG = "Product dialog";
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
-    private static String[] PERMISSIONS_STORAGE = {
+    private static final String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     private ProductAdapter productAdapter;
     private String mCurrentPhotoPath;
 
-    public static void verifyStoragePermissions(Activity activity) {
+    private static void verifyStoragePermissions(Activity activity) {
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         if (permission != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        productAdapter = new ProductAdapter(this, null);
+        productAdapter = new ProductAdapter(this);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(productAdapter);
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         productAdapter.refresh();
     }
 
-    public void addProduct(View view) {
+    public void addProduct(@SuppressWarnings("UnusedParameters") View view) {
         new AddProductDialog().show(getFragmentManager(), DIALOG_TAG);
     }
 
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         return image;
     }
 
-    public void dispatchTakePictureIntent(View view) {
+    public void dispatchTakePictureIntent(@SuppressWarnings("UnusedParameters") View view) {
         verifyStoragePermissions(this);
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {

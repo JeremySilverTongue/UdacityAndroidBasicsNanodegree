@@ -22,18 +22,24 @@ import butterknife.ButterKnife;
 public class DetailActivity extends AppCompatActivity {
 
     static final String PRODUCT_KEY = "product";
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.product_name)
     TextView name;
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.image)
     ImageView image;
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.price)
     TextView price;
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.quantity)
     TextView quantity;
 
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.hard_delete)
     Button hardDelete;
 
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.delete)
     Button delete;
 
@@ -67,36 +73,37 @@ public class DetailActivity extends AppCompatActivity {
         dbHelper.changeQuantity(product.name, delta);
     }
 
-    public void minus5(View view) {
+    public void minus5(@SuppressWarnings("UnusedParameters") View view) {
         modifyQuantity(-5);
     }
 
-    public void minus1(View view) {
+    public void minus1(@SuppressWarnings("UnusedParameters") View view) {
         modifyQuantity(-1);
     }
 
-    public void plus1(View view) {
+    public void plus1(@SuppressWarnings("UnusedParameters") View view) {
         modifyQuantity(1);
     }
 
-    public void plus5(View view) {
+    public void plus5(@SuppressWarnings("UnusedParameters") View view) {
         modifyQuantity(5);
     }
 
-    public void softDelete(View view) {
+    public void softDelete(@SuppressWarnings("UnusedParameters") View view) {
         delete.setVisibility(View.GONE);
         hardDelete.setVisibility(View.VISIBLE);
     }
 
 
-    public void hardDelete(View view) {
+    public void hardDelete(@SuppressWarnings("UnusedParameters") View view) {
+        //noinspection ResultOfMethodCallIgnored
         new File(product.imagePath).delete();
         dbHelper.deleteProduct(product.name);
         NavUtils.navigateUpFromSameTask(this);
     }
 
 
-    public void order(View view) {
+    public void order(@SuppressWarnings("UnusedParameters") View view) {
         product.sendEmailToSupplier(this);
     }
 }

@@ -25,35 +25,22 @@ import timber.log.Timber;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
-    public List<Product> productList;
-
-    InventoryDbHelper dbHelper;
-
-    private View emptyView;
-    private Context context;
-    private DecimalFormat dollarFormat;
+    private final InventoryDbHelper dbHelper;
+    private final Context context;
+    private final DecimalFormat dollarFormat;
+    private List<Product> productList;
 
 
-    ProductAdapter(Context context, View emptyView) {
-
+    ProductAdapter(Context context) {
         this.context = context;
-        this.emptyView = emptyView;
         dollarFormat = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.US);
         dbHelper = new InventoryDbHelper(context);
         refresh();
-
-
     }
 
-    public void refresh() {
+    void refresh() {
         productList = dbHelper.getAllProducts();
 
-
-//        if (productList.size() == 0) {
-//            emptyView.setVisibility(View.VISIBLE);
-//        } else {
-//            emptyView.setVisibility(View.GONE);
-//        }
         notifyDataSetChanged();
     }
 
@@ -75,13 +62,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.quantity.setText(context.getString(R.string.quantity, product.quantity));
 
 
-        if (product.quantity == 0) {
+        if (product.quantity < 1) {
             holder.sellButton.setText(R.string.order);
             holder.sellButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     product.sendEmailToSupplier(context);
-//                    Toast.makeText(context, "Order more!", Toast.LENGTH_LONG).show();
                 }
             });
         } else {

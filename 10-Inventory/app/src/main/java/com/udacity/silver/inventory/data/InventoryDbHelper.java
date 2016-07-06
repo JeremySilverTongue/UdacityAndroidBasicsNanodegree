@@ -20,7 +20,7 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
     private static final String COLUMN_QUANTITY = "quantity";
     private static final String COLUMN_PRICE = "price";
     private static final String COLUMN_EMAIL = "email";
-    private static final String COLUMN_IMAGE_PATH = "imagepath";
+    private static final String COLUMN_IMAGE_PATH = "image_path";
 
 
     private static final int INDEX_NAME = 0;
@@ -39,7 +39,7 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
     };
     private static final String TABLE_NAME = "inventory";
     private static final String DATABASE_NAME = "database.db";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
 
     public InventoryDbHelper(Context context) {
@@ -84,7 +84,7 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
         Timber.d("Adding product: %s", product);
     }
 
-    public Product getProduct(String name) {
+    private Product getProduct(String name) {
         SQLiteDatabase db = getReadableDatabase();
 
         Cursor cursor = db.query(TABLE_NAME, INVENTORY_COLUMNS, COLUMN_NAME + " = ?", new String[]{name}, null, null, null);

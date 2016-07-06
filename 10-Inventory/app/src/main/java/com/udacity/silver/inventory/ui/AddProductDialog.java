@@ -1,5 +1,6 @@
 package com.udacity.silver.inventory.ui;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -21,22 +22,25 @@ import com.udacity.silver.inventory.data.Product;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import timber.log.Timber;
 
 
 public class AddProductDialog extends DialogFragment {
 
-    public static int GET_IMAGE_TAG = 1;
+    public static final int GET_IMAGE_TAG = 1;
 
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.preview)
     ImageView preview;
 
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.product_name)
     EditText nameEditText;
 
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.price)
     CurrencyEditText priceEditText;
 
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.quantity)
     EditText quantityEditText;
 
@@ -51,7 +55,7 @@ public class AddProductDialog extends DialogFragment {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
         LayoutInflater inflater = LayoutInflater.from(getActivity());
-        View view = inflater.inflate(R.layout.dialog_add_product, null);
+        @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.dialog_add_product, null);
 
         builder.setView(view);
         builder.setMessage("Add Product");
@@ -100,8 +104,7 @@ public class AddProductDialog extends DialogFragment {
 
 
         if (name.isEmpty()) {
-            Timber.d("Uhhh");
-            showError(getString(R.string.error_name)); // TODO: Move to strings file
+            showError(getString(R.string.error_name));
         } else if (price.isEmpty()) {
             showError(getString(R.string.error_price));
         } else if (quantity.isEmpty()) {

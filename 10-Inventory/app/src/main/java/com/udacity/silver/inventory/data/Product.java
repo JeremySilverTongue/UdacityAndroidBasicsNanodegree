@@ -31,9 +31,8 @@ public class Product implements Parcelable {
     public final int priceInCents;
     public final String vendorEmail;
     public final String imagePath;
+    private final DecimalFormat dollarFormat;
     public int quantity;
-
-    private DecimalFormat dollarFormat;
 
     public Product(String name, int quantity, int priceInCents, String vendorEmail, String imagePath) {
         this.name = name;

@@ -26,5 +26,6 @@
     <string name="error_name">Please enter a product name!</string>
     <string name="error_price">Please enter a price!</string>
     <string name="error_email">Please enter a vendor email!</string>
+    <string name="content_description_product_image">Product image</string>
 
 </resources>
