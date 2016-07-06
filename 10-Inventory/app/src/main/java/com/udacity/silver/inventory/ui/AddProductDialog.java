@@ -5,20 +5,29 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.udacity.silver.inventory.R;
 import com.udacity.silver.inventory.data.InventoryDbHelper;
 import com.udacity.silver.inventory.data.Product;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 
 public class AddProductDialog extends DialogFragment {
+
+    public static int GET_IMAGE_TAG = 1;
+
+    @BindView(R.id.preview)
+    ImageView preview;
 
     @BindView(R.id.product_name)
     EditText nameEditText;
@@ -31,6 +40,8 @@ public class AddProductDialog extends DialogFragment {
 
     @BindView(R.id.email)
     EditText emailEditText;
+
+    private String photoPath;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -55,6 +66,7 @@ public class AddProductDialog extends DialogFragment {
 
         ButterKnife.bind(this, view);
 
+
         return dialog;
 
 
@@ -70,7 +82,7 @@ public class AddProductDialog extends DialogFragment {
 
         // TODO: Add some verification that the item is legit
 
-        Product product = new Product(name, quantity, price, email, "");
+        Product product = new Product(name, quantity, price, email, photoPath);
         db.addProduct(product);
         dismissAllowingStateLoss();
     }
@@ -83,5 +95,13 @@ public class AddProductDialog extends DialogFragment {
             ((DialogInterface.OnDismissListener) activity).onDismiss(dialog);
         }
     }
+
+    public void receivePhoto(Intent data, String photoPath) {
+        this.photoPath = photoPath;
+        Timber.d("Got a photopath: %s", photoPath);
+        Glide.with(getActivity()).load(photoPath).into(preview);
+        Timber.d("Totally got a photo, yo");
+    }
+
 
 }

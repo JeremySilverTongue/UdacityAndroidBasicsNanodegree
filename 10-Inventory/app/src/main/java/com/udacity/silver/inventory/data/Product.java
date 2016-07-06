@@ -3,6 +3,7 @@ package com.udacity.silver.inventory.data;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.widget.Toast;
@@ -13,21 +14,27 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-import timber.log.Timber;
-
 public class Product implements Parcelable {
 
+    public static final Parcelable.Creator<Product> CREATOR = new Parcelable.Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel source) {
+            return new Product(source);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
     public final String name;
     public final int priceInCents;
-    public int quantity;
     public final String vendorEmail;
     public final String imagePath;
-
-
-    private DecimalFormat dollarFormat;
+    public int quantity;
 
 //    public final String imagePath;
-
+    private DecimalFormat dollarFormat;
 
     public Product(String name, int quantity, int priceInCents, String vendorEmail, String imagePath) {
         this.name = name;
@@ -59,48 +66,36 @@ public class Product implements Parcelable {
         dest.writeString(imagePath);
     }
 
-
     public String getFormattedPrice() {
         return dollarFormat.format((float) priceInCents / 100);
     }
-
 
     @Override
     public int describeContents() {
         return 0;
     }
 
-
-    public static final Parcelable.Creator<Product> CREATOR = new Parcelable.Creator<Product>() {
-        @Override
-        public Product createFromParcel(Parcel source) {
-            return new Product(source);
-        }
-
-        @Override
-        public Product[] newArray(int size) {
-            return new Product[size];
-        }
-    };
-
+    @Override
+    public String toString() {
+        return "Product{" +
+                "name='" + name + '\'' +
+                ", priceInCents=" + priceInCents +
+                ", quantity=" + quantity +
+                ", vendorEmail='" + vendorEmail + '\'' +
+                ", imagePath='" + imagePath + '\'' +
+                '}';
+    }
 
     public void sendEmailToSupplier(Context context) {
         Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setType("text/html");
-        intent.putExtra(Intent.EXTRA_EMAIL, vendorEmail);
+        intent.setData(Uri.parse("mailto:" + vendorEmail)); // only email apps should handle this
         intent.putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.email_subject, name));
         intent.putExtra(Intent.EXTRA_TEXT, context.getString(R.string.email_body, name, dollarFormat.format((float) priceInCents / 200)));
 
-        Timber.d(context.getString(R.string.email_body, name, dollarFormat.format((float) priceInCents / 200)));
-
         if (intent.resolveActivity(context.getPackageManager()) != null) {
-
             context.startActivity(Intent.createChooser(intent, "Send Email"));
         } else {
             Toast.makeText(context, "Order more!", Toast.LENGTH_LONG).show();
         }
-
     }
-
-
 }

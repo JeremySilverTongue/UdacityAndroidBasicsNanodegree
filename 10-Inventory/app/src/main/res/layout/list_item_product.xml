@@ -3,9 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="?android:attr/listPreferredItemHeight"
-    android:gravity="center_vertical"
-
     android:background="?android:attr/selectableItemBackground"
+
+    android:gravity="center_vertical"
     android:orientation="horizontal">
 
 

@@ -79,6 +79,8 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = getWritableDatabase();
         db.insert(TABLE_NAME, null, values);
+
+        db.close();
         Timber.d("Adding product: %s", product);
     }
 
@@ -92,6 +94,9 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             product = getProductFromCursor(cursor);
         }
+
+        cursor.close();
+        db.close();
 
         return product;
 
@@ -129,6 +134,12 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
         return products;
+    }
+
+    public void deleteProduct(String name) {
+        SQLiteDatabase db = getWritableDatabase();
+        db.delete(TABLE_NAME, COLUMN_NAME + "=?", new String[]{name});
+        db.close();
     }
 
 }

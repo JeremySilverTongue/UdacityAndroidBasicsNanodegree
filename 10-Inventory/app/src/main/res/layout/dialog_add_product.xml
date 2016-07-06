@@ -1,36 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/preview"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/image_height"
+        android:adjustViewBounds="false"
+        android:onClick="dispatchTakePictureIntent"
+        android:scaleType="fitCenter"
+        android:src="@android:drawable/ic_menu_camera" />
 
 
     <EditText
+        android:id="@+id/product_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
-        android:id="@+id/product_name"
-        android:hint="Product Name"/>
+        android:text="Product Name" />
 
     <EditText
+        android:id="@+id/price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="numberDecimal"
-        android:hint="Price"
-        android:id="@+id/price"/>
+        android:text="1000" />
 
     <EditText
+        android:id="@+id/quantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="initial quanitity"
-        android:id="@+id/quantity"
+        android:inputType="number"
+        android:text="10"
 
         />
 
     <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Vendor Email"
-        android:id="@+id/email"
+        android:text="test@example.com"
 
         />
 

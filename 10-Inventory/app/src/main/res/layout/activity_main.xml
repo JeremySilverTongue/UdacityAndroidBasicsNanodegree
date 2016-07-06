@@ -13,8 +13,8 @@
         android:layout_width="match_parent"
 
         android:layout_height="match_parent"
-        android:drawSelectorOnTop="true"
-        android:layout_margin="@dimen/activity_margin" />
+        android:layout_margin="@dimen/activity_margin"
+        android:drawSelectorOnTop="true" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

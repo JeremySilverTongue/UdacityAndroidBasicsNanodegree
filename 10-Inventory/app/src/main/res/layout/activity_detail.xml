@@ -3,79 +3,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_detail"
     android:layout_width="match_parent"
-    android:layout_margin="@dimen/activity_margin"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/activity_margin"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context="com.udacity.silver.inventory.ui.DetailActivity">
 
     <TextView
+        android:id="@+id/product_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/product_name"
-        tools:text="Product Name"
-        />
+        tools:text="Product Name" />
 
     <ImageView
+        android:id="@+id/image"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/image_height"
         android:layout_margin="32dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
         android:contentDescription="@string/content_description_item_image"
+        android:scaleType="centerInside"
 
         />
 
     <TextView
+        android:id="@+id/price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/price"
-        tools:text="$1234.56"
-        />
+        tools:text="$1234.56" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:gravity="center_horizontal">
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
 
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="minus5"
-            android:text="-5"
-            />
+            android:text="-5" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="minus1"
-            android:text="-1"
-            />
+            android:text="-1" />
 
         <TextView
+            android:id="@+id/quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/quantity"
-            tools:text="500"/>
+            tools:text="500" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="plus1"
-            android:text="+1"
-            />
+            android:text="+1" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="plus5"
-            android:text="+5"
-            />
+            android:text="+5" />
 
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="softDelete"
+            android:text="Delete"
+
+            />
+
+        <Button
+            android:id="@+id/delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:onClick="hardDelete"
+            android:text="Really Delete?"
+            android:visibility="invisible" />
+
+    </LinearLayout>
 
 
 </LinearLayout>

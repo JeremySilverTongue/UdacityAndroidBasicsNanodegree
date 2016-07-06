@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.udacity.silver.inventory.R;
 import com.udacity.silver.inventory.data.InventoryDbHelper;
@@ -74,7 +73,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         holder.name.setText(product.name);
         holder.price.setText(dollarFormat.format((float) product.priceInCents / 100));
         holder.quantity.setText(context.getString(R.string.quantity, product.quantity));
-
 
 
         if (product.quantity == 0) {
