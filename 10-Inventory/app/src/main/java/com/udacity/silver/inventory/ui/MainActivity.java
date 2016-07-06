@@ -32,25 +32,23 @@ import timber.log.Timber;
 public class MainActivity extends AppCompatActivity implements DialogInterface.OnDismissListener {
 
 
-    static final int REQUEST_TAKE_PHOTO = 1;
+    private static final int REQUEST_TAKE_PHOTO = 1;
     private static final String DIALOG_TAG = "Product dialog";
-    // Storage Permissions
+
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
+
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     private ProductAdapter productAdapter;
     private String mCurrentPhotoPath;
 
     public static void verifyStoragePermissions(Activity activity) {
-        // Check if we have write permission
         int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
-
         if (permission != PackageManager.PERMISSION_GRANTED) {
-            // We don't have permission so prompt the user
             ActivityCompat.requestPermissions(
                     activity,
                     PERMISSIONS_STORAGE,
@@ -93,7 +91,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
     private File createImageFile() throws IOException {
         verifyStoragePermissions(this);
-        // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
         String imageFileName = "JPEG_" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
@@ -103,7 +100,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
                 storageDir
         );
 
-        // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = "file:" + image.getAbsolutePath();
         Timber.d(mCurrentPhotoPath);
         return image;
@@ -133,13 +129,10 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == AddProductDialog.GET_IMAGE_TAG && resultCode == RESULT_OK) {
-
             Fragment dialog = getFragmentManager().findFragmentByTag(DIALOG_TAG);
             if (dialog != null) {
-
-                ((AddProductDialog) dialog).receivePhoto(data, mCurrentPhotoPath);
+                ((AddProductDialog) dialog).receivePhoto(mCurrentPhotoPath);
             }
         }
 

@@ -20,8 +20,8 @@ public class InventoryApp extends Application {
 
         InventoryDbHelper db = new InventoryDbHelper(this);
 
-        db.addProduct(new Product("Herp", 2, 1234, "vendor@example.com", ""));
-        db.addProduct(new Product("Derp", 5, 2345, "vendor@example.com", ""));
+        db.addProduct(new Product("Test Product 1", 2, 1234, "vendor@example.com", ""));
+        db.addProduct(new Product("Test Product 2", 5, 2345, "vendor@example.com", ""));
     }
 
 }

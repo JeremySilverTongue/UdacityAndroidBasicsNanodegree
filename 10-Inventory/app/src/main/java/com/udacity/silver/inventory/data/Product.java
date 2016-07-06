@@ -33,7 +33,6 @@ public class Product implements Parcelable {
     public final String imagePath;
     public int quantity;
 
-//    public final String imagePath;
     private DecimalFormat dollarFormat;
 
     public Product(String name, int quantity, int priceInCents, String vendorEmail, String imagePath) {

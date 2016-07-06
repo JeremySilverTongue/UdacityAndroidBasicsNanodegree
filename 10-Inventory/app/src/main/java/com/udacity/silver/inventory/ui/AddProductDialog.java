@@ -5,13 +5,15 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.blackcat.currencyedittext.CurrencyEditText;
 import com.bumptech.glide.Glide;
 import com.udacity.silver.inventory.R;
 import com.udacity.silver.inventory.data.InventoryDbHelper;
@@ -33,7 +35,7 @@ public class AddProductDialog extends DialogFragment {
     EditText nameEditText;
 
     @BindView(R.id.price)
-    EditText priceEditText;
+    CurrencyEditText priceEditText;
 
     @BindView(R.id.quantity)
     EditText quantityEditText;
@@ -62,7 +64,22 @@ public class AddProductDialog extends DialogFragment {
 
         builder.setNegativeButton("Cancel", null);
 
-        Dialog dialog = builder.create();
+        final AlertDialog dialog = builder.create();
+
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                Button b = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+                b.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View view) {
+                        addProduct();
+
+                    }
+                });
+            }
+        });
 
         ButterKnife.bind(this, view);
 
@@ -75,16 +92,32 @@ public class AddProductDialog extends DialogFragment {
 
     private void addProduct() {
         InventoryDbHelper db = new InventoryDbHelper(getActivity());
+
         String name = nameEditText.getText().toString();
-        int price = Integer.parseInt(priceEditText.getText().toString());
-        int quantity = Integer.parseInt(quantityEditText.getText().toString());
-        String email = emailEditText.getText().toString();
+        String price = Long.toString(priceEditText.getRawValue());
+        String quantity = quantityEditText.getText().toString();
+        String email = quantityEditText.getText().toString();
 
-        // TODO: Add some verification that the item is legit
 
-        Product product = new Product(name, quantity, price, email, photoPath);
-        db.addProduct(product);
-        dismissAllowingStateLoss();
+        if (name.isEmpty()) {
+            Timber.d("Uhhh");
+            showError(getString(R.string.error_name)); // TODO: Move to strings file
+        } else if (price.isEmpty()) {
+            showError(getString(R.string.error_price));
+        } else if (quantity.isEmpty()) {
+            showError(getString(R.string.error_quantity));
+        } else if (email.isEmpty()) {
+            showError(getString(R.string.error_email));
+        } else {
+            Product product = new Product(name, Integer.parseInt(quantity), Integer.parseInt(price), email, photoPath);
+            db.addProduct(product);
+            dismissAllowingStateLoss();
+        }
+
+    }
+
+    private void showError(String message) {
+        Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -96,11 +129,9 @@ public class AddProductDialog extends DialogFragment {
         }
     }
 
-    public void receivePhoto(Intent data, String photoPath) {
+    void receivePhoto(String photoPath) {
         this.photoPath = photoPath;
-        Timber.d("Got a photopath: %s", photoPath);
         Glide.with(getActivity()).load(photoPath).into(preview);
-        Timber.d("Totally got a photo, yo");
     }
 
 

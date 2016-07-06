@@ -12,5 +12,19 @@
     <string name="email_subject">Restocking %s</string>
 
     <string name="email_body"> Howdy!\n\nWe\'re fresh out of %1$s and are looking to stock up. We\'d like to place an order for XXXX units. The price is still %2$s, right?\n\nY\'all make the best %1$s in the world!\n\nThank you kindly,\n\nXXXXXX</string>
+    <string name="error_quantity">Please enter an initial quantity!</string>
+    <string name="delete">Delete</string>
+    <string name="really_delete">Really Delete?</string>
+    <string name="minus5">-5</string>
+    <string name="plus1">+1</string>
+    <string name="minus1">-1</string>
+    <string name="plus5">+5</string>
+    <string name="product_name">Product Name</string>
+    <string name="price">Price</string>
+    <string name="initial_inventory">Initial Inventory</string>
+    <string name="vendor_email_address">Vendor Email Address</string>
+    <string name="error_name">Please enter a product name!</string>
+    <string name="error_price">Please enter a price!</string>
+    <string name="error_email">Please enter a vendor email!</string>
 
 </resources>

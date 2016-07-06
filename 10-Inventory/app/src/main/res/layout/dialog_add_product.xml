@@ -18,22 +18,22 @@
         android:id="@+id/product_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:text="Product Name" />
+        android:hint="@string/product_name"
+        android:inputType="text" />
 
-    <EditText
+    <com.blackcat.currencyedittext.CurrencyEditText
         android:id="@+id/price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal"
-        android:text="1000" />
+        android:hint="@string/price"
+        android:inputType="numberDecimal" />
 
     <EditText
         android:id="@+id/quantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/initial_inventory"
         android:inputType="number"
-        android:text="10"
 
         />
 
@@ -41,7 +41,7 @@
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="test@example.com"
+        android:hint="@string/vendor_email_address"
 
         />
 

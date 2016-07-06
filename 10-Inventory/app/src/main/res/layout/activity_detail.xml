@@ -41,13 +41,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="minus5"
-            android:text="-5" />
+            android:text="@string/minus5" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="minus1"
-            android:text="-1" />
+            android:text="@string/minus1" />
 
         <TextView
             android:id="@+id/quantity"
@@ -59,39 +59,41 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="plus1"
-            android:text="+1" />
+            android:text="@string/plus1" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="plus5"
-            android:text="+5" />
+            android:text="@string/plus5" />
 
 
     </LinearLayout>
 
-    <LinearLayout
+
+    <Button
+        android:id="@+id/delete"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:onClick="softDelete"
+        android:text="@string/delete"
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="softDelete"
-            android:text="Delete"
+        />
 
-            />
+    <Button
+        android:id="@+id/hard_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:onClick="hardDelete"
+        android:text="@string/really_delete"
+        android:visibility="gone" />
 
-        <Button
-            android:id="@+id/delete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@android:color/holo_red_dark"
-            android:onClick="hardDelete"
-            android:text="Really Delete?"
-            android:visibility="invisible" />
-
-    </LinearLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="order"
+        android:text="@string/order" />
 
 
 </LinearLayout>

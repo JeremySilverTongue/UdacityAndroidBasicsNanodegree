@@ -30,8 +30,13 @@ public class DetailActivity extends AppCompatActivity {
     TextView price;
     @BindView(R.id.quantity)
     TextView quantity;
+
+    @BindView(R.id.hard_delete)
+    Button hardDelete;
+
     @BindView(R.id.delete)
     Button delete;
+
     private Product product;
     private InventoryDbHelper dbHelper;
 
@@ -48,7 +53,9 @@ public class DetailActivity extends AppCompatActivity {
         price.setText(product.getFormattedPrice());
         quantity.setText(String.format(Locale.getDefault(), "%d", product.quantity));
 
-        Glide.with(this).load(new File(product.imagePath)).into(image);
+        if (!product.imagePath.isEmpty()) {
+            Glide.with(this).load(new File(product.imagePath)).into(image);
+        }
 
         dbHelper = new InventoryDbHelper(this);
     }
@@ -77,12 +84,19 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void softDelete(View view) {
-        delete.setVisibility(View.VISIBLE);
+        delete.setVisibility(View.GONE);
+        hardDelete.setVisibility(View.VISIBLE);
     }
 
 
     public void hardDelete(View view) {
+        new File(product.imagePath).delete();
         dbHelper.deleteProduct(product.name);
         NavUtils.navigateUpFromSameTask(this);
+    }
+
+
+    public void order(View view) {
+        product.sendEmailToSupplier(this);
     }
 }
