@@ -10,8 +10,6 @@ import android.support.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-import timber.log.Timber;
-
 
 public class InventoryDbHelper extends SQLiteOpenHelper {
 
@@ -81,7 +79,6 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
         db.insert(TABLE_NAME, null, values);
 
         db.close();
-        Timber.d("Adding product: %s", product);
     }
 
     private Product getProduct(String name) {

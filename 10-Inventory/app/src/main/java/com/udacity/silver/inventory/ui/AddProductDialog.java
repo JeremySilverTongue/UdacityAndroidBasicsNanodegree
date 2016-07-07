@@ -20,31 +20,15 @@ import com.udacity.silver.inventory.R;
 import com.udacity.silver.inventory.data.InventoryDbHelper;
 import com.udacity.silver.inventory.data.Product;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 
 public class AddProductDialog extends DialogFragment {
 
-    public static final int GET_IMAGE_TAG = 1;
+    static final int GET_IMAGE_TAG = 1;
 
-    @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.preview)
     ImageView preview;
-
-    @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.product_name)
     EditText nameEditText;
-
-    @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.price)
     CurrencyEditText priceEditText;
-
-    @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.quantity)
     EditText quantityEditText;
-
-    @BindView(R.id.email)
     EditText emailEditText;
 
     private String photoPath;
@@ -85,7 +69,11 @@ public class AddProductDialog extends DialogFragment {
             }
         });
 
-        ButterKnife.bind(this, view);
+        preview = (ImageView) view.findViewById(R.id.preview);
+        nameEditText = (EditText) view.findViewById(R.id.product_name);
+        priceEditText = (CurrencyEditText) view.findViewById(R.id.price);
+        quantityEditText = (EditText) view.findViewById(R.id.quantity);
+        emailEditText = (EditText) view.findViewById(R.id.email);
 
 
         return dialog;

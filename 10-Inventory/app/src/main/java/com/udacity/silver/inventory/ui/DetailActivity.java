@@ -16,31 +16,15 @@ import com.udacity.silver.inventory.data.Product;
 import java.io.File;
 import java.util.Locale;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
 public class DetailActivity extends AppCompatActivity {
 
     static final String PRODUCT_KEY = "product";
-    @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.product_name)
+
     TextView name;
-    @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.image)
     ImageView image;
-    @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.price)
     TextView price;
-    @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.quantity)
     TextView quantity;
-
-    @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.hard_delete)
     Button hardDelete;
-
-    @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.delete)
     Button delete;
 
     private Product product;
@@ -51,7 +35,13 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        ButterKnife.bind(this);
+
+        name = (TextView) findViewById(R.id.product_name);
+        image = (ImageView) findViewById(R.id.image);
+        price = (TextView) findViewById(R.id.price);
+        quantity = (TextView) findViewById(R.id.quantity);
+        hardDelete = (Button) findViewById(R.id.hard_delete);
+        delete = (Button) findViewById(R.id.delete);
 
         product = getIntent().getParcelableExtra(PRODUCT_KEY);
 

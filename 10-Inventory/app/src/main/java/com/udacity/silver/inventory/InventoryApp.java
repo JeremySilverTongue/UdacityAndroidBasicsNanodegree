@@ -5,7 +5,6 @@ import android.app.Application;
 import com.udacity.silver.inventory.data.InventoryDbHelper;
 import com.udacity.silver.inventory.data.Product;
 
-import timber.log.Timber;
 
 public class InventoryApp extends Application {
 
@@ -13,10 +12,6 @@ public class InventoryApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-        if (BuildConfig.DEBUG) {
-            Timber.uprootAll();
-            Timber.plant(new Timber.DebugTree());
-        }
 
         InventoryDbHelper db = new InventoryDbHelper(this);
 

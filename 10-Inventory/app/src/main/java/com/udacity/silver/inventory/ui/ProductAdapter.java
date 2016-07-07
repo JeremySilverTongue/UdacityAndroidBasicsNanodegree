@@ -18,19 +18,14 @@ import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import timber.log.Timber;
-
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     private final InventoryDbHelper dbHelper;
     private final Context context;
     private final DecimalFormat dollarFormat;
-    private List<Product> productList;
-
     private final View emptyView;
+    private List<Product> productList;
 
     ProductAdapter(Context context, View emptyView) {
         this.context = context;
@@ -43,7 +38,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     void refresh() {
         productList = dbHelper.getAllProducts();
 
-        if (productList.size() == 0){
+        if (productList.size() == 0) {
             emptyView.setVisibility(View.VISIBLE);
         } else {
             emptyView.setVisibility(View.GONE);
@@ -62,9 +57,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     @Override
     public void onBindViewHolder(final ProductViewHolder holder, int position) {
         final Product product = productList.get(position);
-
-
-        Timber.d("Binding product: %s", product);
         holder.name.setText(product.name);
         holder.price.setText(dollarFormat.format((float) product.priceInCents / 100));
         holder.quantity.setText(context.getString(R.string.quantity, product.quantity));
@@ -100,29 +92,24 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     class ProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-
-        @BindView(R.id.product_name)
         TextView name;
-
-        @BindView(R.id.price)
         TextView price;
-
-        @BindView(R.id.quantity)
         TextView quantity;
-
-        @BindView(R.id.sell_button)
         Button sellButton;
 
-        public ProductViewHolder(View itemView) {
+        ProductViewHolder(View itemView) {
             super(itemView);
 
-            ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(this);
+            name = (TextView) itemView.findViewById(R.id.product_name);
+            price = (TextView) itemView.findViewById(R.id.price);
+            quantity = (TextView) itemView.findViewById(R.id.quantity);
+            sellButton = (Button) itemView.findViewById(R.id.sell_button);
+            sellButton.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            Timber.d("Clicked on a list iem");
+
             Intent intent = new Intent(context, DetailActivity.class);
             intent.putExtra(DetailActivity.PRODUCT_KEY, productList.get(getAdapterPosition()));
             context.startActivity(intent);

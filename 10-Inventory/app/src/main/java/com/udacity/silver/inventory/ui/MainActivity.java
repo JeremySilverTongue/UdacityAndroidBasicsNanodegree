@@ -15,6 +15,7 @@ import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.udacity.silver.inventory.R;
@@ -24,10 +25,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity implements DialogInterface.OnDismissListener {
 
@@ -41,12 +38,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
 
-    @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.empty)
     View empty;
-
-    @SuppressWarnings("WeakerAccess")
-    @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     private ProductAdapter productAdapter;
     private String mCurrentPhotoPath;
@@ -66,7 +58,11 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+
+        empty = findViewById(R.id.empty);
+
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+
 
         productAdapter = new ProductAdapter(this, empty);
 
@@ -90,7 +86,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
 
     @Override
     public void onDismiss(DialogInterface dialog) {
-        Timber.d("Fragment dismissed");
         productAdapter.refresh();
     }
 
@@ -106,7 +101,6 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         );
 
         mCurrentPhotoPath = "file:" + image.getAbsolutePath();
-        Timber.d(mCurrentPhotoPath);
         return image;
     }
 
@@ -119,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
             try {
                 photoFile = createImageFile();
             } catch (IOException ex) {
-                Timber.e(ex, "Filed to create file to store photo");
+                Log.e("Wish I could use Timber", "Photo file fail", ex);
             }
 
             if (photoFile != null) {
