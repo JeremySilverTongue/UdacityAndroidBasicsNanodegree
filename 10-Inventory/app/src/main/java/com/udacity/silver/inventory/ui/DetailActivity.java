@@ -59,8 +59,11 @@ public class DetailActivity extends AppCompatActivity {
 
     private void modifyQuantity(int delta) {
         product.quantity += delta;
+        if (product.quantity < 0) {
+            product.quantity = 0;
+        }
         quantity.setText(String.format(Locale.getDefault(), "%d", product.quantity));
-        dbHelper.changeQuantity(product.name, delta);
+        dbHelper.setProductQuantity(product.name, product.quantity);
     }
 
     public void minus5(@SuppressWarnings("UnusedParameters") View view) {

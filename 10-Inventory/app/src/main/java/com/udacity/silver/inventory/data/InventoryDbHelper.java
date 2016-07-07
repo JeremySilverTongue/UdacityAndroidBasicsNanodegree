@@ -116,6 +116,11 @@ public class InventoryDbHelper extends SQLiteOpenHelper {
         addProduct(new Product(product.name, product.quantity + delta, product.priceInCents, product.vendorEmail, product.imagePath));
     }
 
+    public void setProductQuantity(String name, int quantity) {
+        Product product = getProduct(name);
+        addProduct(new Product(product.name, quantity, product.priceInCents, product.vendorEmail, product.imagePath));
+    }
+
 
     public List<Product> getAllProducts() {
 
