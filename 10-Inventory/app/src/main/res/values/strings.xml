@@ -20,7 +20,7 @@
     <string name="minus1">-1</string>
     <string name="plus5">+5</string>
     <string name="product_name">Product Name</string>
-    <string name="price">Price</string>
+    <string name="price">Price in cents</string>
     <string name="initial_inventory">Initial Inventory</string>
     <string name="vendor_email_address">Vendor Email Address</string>
     <string name="error_name">Please enter a product name!</string>

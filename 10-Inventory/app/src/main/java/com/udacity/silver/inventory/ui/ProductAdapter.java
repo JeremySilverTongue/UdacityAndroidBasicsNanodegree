@@ -104,7 +104,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             price = (TextView) itemView.findViewById(R.id.price);
             quantity = (TextView) itemView.findViewById(R.id.quantity);
             sellButton = (Button) itemView.findViewById(R.id.sell_button);
-            sellButton.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
 
         @Override

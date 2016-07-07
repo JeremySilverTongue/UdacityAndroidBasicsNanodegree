@@ -14,7 +14,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.blackcat.currencyedittext.CurrencyEditText;
 import com.bumptech.glide.Glide;
 import com.udacity.silver.inventory.R;
 import com.udacity.silver.inventory.data.InventoryDbHelper;
@@ -27,7 +26,7 @@ public class AddProductDialog extends DialogFragment {
 
     ImageView preview;
     EditText nameEditText;
-    CurrencyEditText priceEditText;
+    EditText priceEditText;
     EditText quantityEditText;
     EditText emailEditText;
 
@@ -71,7 +70,7 @@ public class AddProductDialog extends DialogFragment {
 
         preview = (ImageView) view.findViewById(R.id.preview);
         nameEditText = (EditText) view.findViewById(R.id.product_name);
-        priceEditText = (CurrencyEditText) view.findViewById(R.id.price);
+        priceEditText = (EditText) view.findViewById(R.id.price);
         quantityEditText = (EditText) view.findViewById(R.id.quantity);
         emailEditText = (EditText) view.findViewById(R.id.email);
 
@@ -86,7 +85,7 @@ public class AddProductDialog extends DialogFragment {
         InventoryDbHelper db = new InventoryDbHelper(getActivity());
 
         String name = nameEditText.getText().toString();
-        String price = Long.toString(priceEditText.getRawValue());
+        String price = priceEditText.getText().toString();
         String quantity = quantityEditText.getText().toString();
         String email = quantityEditText.getText().toString();
 
