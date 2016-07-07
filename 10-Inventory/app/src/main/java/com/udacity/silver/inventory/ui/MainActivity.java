@@ -42,6 +42,10 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
     };
 
     @SuppressWarnings("WeakerAccess")
+    @BindView(R.id.empty)
+    View empty;
+
+    @SuppressWarnings("WeakerAccess")
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
     private ProductAdapter productAdapter;
@@ -64,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements DialogInterface.O
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        productAdapter = new ProductAdapter(this);
+        productAdapter = new ProductAdapter(this, empty);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(productAdapter);

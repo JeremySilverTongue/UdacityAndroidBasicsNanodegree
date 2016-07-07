@@ -30,9 +30,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
     private final DecimalFormat dollarFormat;
     private List<Product> productList;
 
+    private final View emptyView;
 
-    ProductAdapter(Context context) {
+    ProductAdapter(Context context, View emptyView) {
         this.context = context;
+        this.emptyView = emptyView;
         dollarFormat = (DecimalFormat) NumberFormat.getCurrencyInstance(Locale.US);
         dbHelper = new InventoryDbHelper(context);
         refresh();
@@ -40,6 +42,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
 
     void refresh() {
         productList = dbHelper.getAllProducts();
+
+        if (productList.size() == 0){
+            emptyView.setVisibility(View.VISIBLE);
+        } else {
+            emptyView.setVisibility(View.GONE);
+        }
 
         notifyDataSetChanged();
     }
