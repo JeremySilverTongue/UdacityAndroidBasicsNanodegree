@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-
+        android:contentDescription="@string/conference_room"
         android:scaleType="centerInside"
         tools:src="@drawable/curiosity" />
 

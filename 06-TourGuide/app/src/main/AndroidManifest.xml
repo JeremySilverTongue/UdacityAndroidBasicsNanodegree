@@ -3,9 +3,9 @@
     package="com.udacity.silver.udacitytour">
 
     <application
+        android:name=".TourApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:name=".TourApp"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">

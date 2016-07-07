@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
-    
+
     <string-array name="snacks">
-        <item>"Jelly Beans"</item>
-        <item>"Jelly Beans"</item>
+        <item>@string/snack_jelly_beans</item>
+        <item>@string/snack_caramels</item>
+        <item>@string/snack_jerky</item>
+        <item>@string/snack_mangoes</item>
     </string-array>
-    
 
+    <string-array name="squishables">
+        <item>@string/squishable_puppycat</item>
+        <item>@string/squishable_ray</item>
+        <item>@string/squishable_toast</item>
+    </string-array>
 
+    <string-array name="electric_vehicles">
+        <item>@string/vehicle_hoverboard</item>
+        <item>@string/vehicle_boosted</item>
+        <item>@string/vehicle_ninebot</item>
+        <item>@string/vehicle_bike</item>
+    </string-array>
 
 </resources>

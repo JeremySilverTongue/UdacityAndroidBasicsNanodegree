@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.udacity.silver.udacitytour.R;
 
 
 public class TourAdapter extends FragmentPagerAdapter {
@@ -28,6 +29,12 @@ public class TourAdapter extends FragmentPagerAdapter {
             case 1:
                 fragment = new SnacksFragment();
                 break;
+            case 2:
+                fragment = new SquishablesFragment();
+                break;
+            case 3:
+                fragment = new VehiclesFragment();
+                break;
             default:
                 fragment = null;
                 break;
@@ -41,12 +48,18 @@ public class TourAdapter extends FragmentPagerAdapter {
 
         String title;
 
-        switch (position){
+        switch (position) {
             case 0:
-                title = "Conference Rooms";
+                title = context.getString(R.string.title_conference);
                 break;
             case 1:
-                title = "Snacks";
+                title = context.getString(R.string.title_snacks);
+                break;
+            case 2:
+                title = context.getString(R.string.title_squish);
+                break;
+            case 3:
+                title = context.getString(R.string.title_vehicles);
                 break;
             default:
                 title = "";
@@ -59,6 +72,6 @@ public class TourAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 4;
     }
 }

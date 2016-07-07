@@ -1,6 +1,5 @@
 package com.udacity.silver.udacitytour.ui;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -14,12 +13,13 @@ import com.udacity.silver.udacitytour.R;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SnacksFragment extends Fragment {
+public class SquishablesFragment extends Fragment {
+
 
     @BindView(R.id.list_view)
     ListView listView;
 
-    public SnacksFragment() {
+    public SquishablesFragment() {
 
     }
 
@@ -29,11 +29,7 @@ public class SnacksFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.list_fragment, container, false);
         ButterKnife.bind(this, view);
-        listView.setAdapter(new ArrayAdapter<>(
-                getContext(),
-                R.layout.list_item,
-                getResources().getStringArray(R.array.snacks)));
+        listView.setAdapter(new ArrayAdapter<>(getContext(), R.layout.list_item, getResources().getStringArray(R.array.squishables)));
         return view;
     }
-
 }

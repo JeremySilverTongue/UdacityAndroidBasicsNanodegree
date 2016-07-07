@@ -16,7 +16,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import timber.log.Timber;
 
 
 public class ConferenceRoomsAdapter extends RecyclerView.Adapter<ConferenceRoomsAdapter.ConferenceRoomViewHolder> {
@@ -31,10 +30,10 @@ public class ConferenceRoomsAdapter extends RecyclerView.Adapter<ConferenceRooms
         rooms = new ArrayList<>();
 
         rooms.add(new ConferenceRoom(context.getString(R.string.curiosity), 4, R.drawable.curiosity));
-        rooms.add(new ConferenceRoom(context.getString(R.string.r2d2), 4, R.drawable.r2d2));
-        rooms.add(new ConferenceRoom(context.getString(R.string.optimus_prime), 4, R.drawable.optimus_prime));
-        rooms.add(new ConferenceRoom(context.getString(R.string.past), 4, R.drawable.past));
-        rooms.add(new ConferenceRoom(context.getString(R.string.megaman), 4, R.drawable.mega_man));
+        rooms.add(new ConferenceRoom(context.getString(R.string.r2d2), 12, R.drawable.r2d2));
+        rooms.add(new ConferenceRoom(context.getString(R.string.optimus_prime), 18, R.drawable.optimus_prime));
+        rooms.add(new ConferenceRoom(context.getString(R.string.past), 2, R.drawable.past));
+        rooms.add(new ConferenceRoom(context.getString(R.string.megaman), 8, R.drawable.mega_man));
 
 
     }
@@ -47,13 +46,10 @@ public class ConferenceRoomsAdapter extends RecyclerView.Adapter<ConferenceRooms
 
     @Override
     public void onBindViewHolder(ConferenceRoomViewHolder holder, int position) {
-        Timber.d("Binding position %d", position);
         ConferenceRoom room = rooms.get(position);
-
         holder.image.setImageDrawable(context.getDrawable(room.imageId));
         holder.name.setText(room.name);
-        holder.seats.setText(context.getString(R.string.seats,room.chairs));
-
+        holder.seats.setText(context.getString(R.string.seats, room.chairs));
     }
 
     @Override

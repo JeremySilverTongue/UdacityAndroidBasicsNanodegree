@@ -1,14 +1,33 @@
 <resources>
     <string name="app_name">Udacity Tour</string>
-    
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    
+
     <string name="r2d2">R2-D2</string>
     <string name="curiosity">Curiosity</string>
     <string name="optimus_prime">Optimus Prime</string>
     <string name="megaman">MegaMan</string>
     <string name="past">Past</string>
-    
+
     <string name="seats">Seats: %d</string>
-    
+    <string name="title_conference">Conference Rooms</string>
+    <string name="title_snacks">Snacks</string>
+    <string name="title_squish">Squishables</string>
+    <string name="title_vehicles">Vehicles</string>
+    <string name="conference_room">Conference Room</string>
+
+    <string name="snack_jelly_beans">Jelly Beans</string>
+    <string name="snack_caramels">Caramels</string>
+    <string name="snack_jerky">Jerky</string>
+    <string name="snack_mangoes">Dried Mangoes</string>
+
+    <string name="squishable_puppycat">Puppycat</string>
+    <string name="squishable_ray">A manta ray</string>
+    <string name="squishable_toast">A piece of buttered toast</string>
+
+    <string name="vehicle_hoverboard">Hoverboard</string>
+    <string name="vehicle_boosted">Boosted Board</string>
+    <string name="vehicle_ninebot">NineBot</string>
+    <string name="vehicle_bike">Sebastian\'s electric bike</string>
+
 </resources>
